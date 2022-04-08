@@ -10,8 +10,10 @@ const transformOrdersData = (results: any) => {
         order_id: r.order_id,
         table_id: r.table_id,
         status: r.status,
+        total_price: 0,
         items: [],
       };
+    arr[r.order_id].total_price += r.total_price;
     arr[r.order_id].items.push({
       id: r.id,
       menu_id: r.menu_id,
@@ -69,4 +71,10 @@ export const createOrder = async (req: Request, res: Response) => {
   return res.status(200).json(order);
 };
 
-// export const updateOrderStatus
+export const updateOrderStatus = async (req: Request, res: Response) => {
+  const order = await AppDataSource.getRepository(Orders).findOneBy({ id: req.body.order_id });
+  order.status = req.body.status;
+  const result = await AppDataSource.getRepository(Orders).save(order);
+
+  return res.status(200).json(result);
+}

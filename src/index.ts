@@ -2,7 +2,7 @@ import "reflect-metadata";
 import * as express from "express";
 import { Application, Request, Response } from "express";
 import { getMenus } from "controller/menu";
-import { createOrder, getOrders, getOrdersByTable } from "controller/order";
+import { createOrder, getOrders, getOrdersByTable, updateOrderStatus } from "controller/order";
 import { AppDataSource } from "data-source";
 
 AppDataSource.initialize().then(() => {
@@ -22,6 +22,10 @@ AppDataSource.initialize().then(() => {
 
   app.post("/create-order", (req: Request, res: Response) =>
     createOrder(req, res)
+  );
+
+  app.post("/update-order-status", (req: Request, res: Response) =>
+    updateOrderStatus(req, res)
   );
 
   app.listen(process.env.PORT || 3000);
