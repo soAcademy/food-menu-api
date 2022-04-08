@@ -5,6 +5,8 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-      "baseUrl": "./src"
-  }
+    "baseUrl": "./src"
+  },
+  "emitDecoratorMetadata": true,
+  "experimentalDecorators": true
 }
