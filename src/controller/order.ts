@@ -3,13 +3,48 @@ import { OrdersItem } from "../entity/orders_item";
 import { Request, Response } from "express";
 import { AppDataSource } from "../data-source";
 
+const transformOrdersData = (results: any) => {
+  const data = results.reduce((arr: any, r: any) => {
+    if (!arr[r.order_id])
+      arr[r.order_id] = {
+        order_id: r.order_id,
+        table_id: r.table_id,
+        status: r.status,
+        items: [],
+      };
+    arr[r.order_id].items.push({
+      id: r.id,
+      menu_id: r.menu_id,
+      price: r.price,
+      quantity: r.quantity,
+      total_price: r.total_price,
+      name: r.name,
+      image: r.image,
+      category: r.category,
+    });
+    return arr;
+  }, {});
+
+  return Object.keys(data)
+    .map((key) => data[key])
+    .sort((v1, v2) => v2.order_id - v1.order_id);
+}
+
 export const getOrders = async (req: Request, res: Response) => {
-  const results = await AppDataSource
-    .query(`SELECT * FROM orders_item
+  const results = await AppDataSource.query(`SELECT * FROM orders_item
       LEFT JOIN orders ON orders_item.order_id = orders.id
       LEFT JOIN menu ON menu.id = orders_item.menu_id`);
 
-  return res.status(200).json(results);
+  return res.status(200).json(transformOrdersData(results));
+};
+
+export const getOrdersByTable = async (req: Request, res: Response) => {
+  const results = await AppDataSource.query(`SELECT * FROM orders_item
+      LEFT JOIN orders ON orders_item.order_id = orders.id
+      LEFT JOIN menu ON menu.id = orders_item.menu_id
+      WHERE orders.table_id = ${req.body.table_id}`);
+
+  return res.status(200).json(transformOrdersData(results));
 };
 
 export const createOrder = async (req: Request, res: Response) => {
@@ -17,7 +52,7 @@ export const createOrder = async (req: Request, res: Response) => {
     table_id: req.body.table_id,
   });
 
-  const orderItems = await AppDataSource.createQueryBuilder()
+  await AppDataSource.createQueryBuilder()
     .insert()
     .into(OrdersItem)
     .values(
@@ -33,3 +68,5 @@ export const createOrder = async (req: Request, res: Response) => {
 
   return res.status(200).json(order);
 };
+
+// export const updateOrderStatus

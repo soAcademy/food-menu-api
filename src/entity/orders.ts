@@ -9,6 +9,9 @@ export class Orders {
   @Column()
   table_id: number;
 
+  @Column()
+  status: string;
+
   @OneToMany(() => OrdersItem, (ordersItem) => ordersItem.order_id, {
     cascade: true,
   })
