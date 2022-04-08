@@ -1,6 +1,9 @@
 import "reflect-metadata";
+
 import { DataSource } from "typeorm";
-import { Menu } from "./entity/menu"
+import { Orders } from "entity/orders";
+import { OrdersItem } from "entity/orders_item";
+import { Menu } from "./entity/menu";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -11,16 +14,5 @@ export const AppDataSource = new DataSource({
   database: process.env.DATABASE_DATABASE || "postgres",
   synchronize: false,
   logging: false,
-  // entities: [
-  //   process.env.NODE_ENV === 'development'
-  //     ? 'src/entity/*.ts'
-  //     : 'dist/entity/*.js',
-  // ],
-  entities: [Menu],
-  // cli: {
-  //   entitiesDir: "src/entity",
-  // },
-  // connectionTimeout: 30000,
-  // acquireTimeout: 30000,
+  entities: [Menu, Orders, OrdersItem],
 });
-

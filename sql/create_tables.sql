@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS orders_item(
   menu_id INTEGER NOT NULL,
   price REAL NOT NULL,
   quantity INTEGER NOT NULL,
-  total_price REAL NOT NULL
+  total_price REAL NOT NULL,
+  CONSTRAINT fk_order_id FOREIGN KEY (order_id) REFERENCES orders (id)
 );
 
 

@@ -1,7 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
-export class OrderItem extends BaseEntity {
+export class OrdersItem {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -12,14 +12,11 @@ export class OrderItem extends BaseEntity {
   menu_id: number;
 
   @Column()
-  name: string;
-
-  @Column()
   price: number;
 
   @Column()
   quantity: number;
 
   @Column()
-  totalPrice: number;
+  total_price: number;
 }
