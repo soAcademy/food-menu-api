@@ -1,14 +1,12 @@
 import { Menu } from "../entity/menu";
 import { Request, Response } from "express";
-import { getManager } from "typeorm";
+import { AppDataSource } from "../data-source";
 
 export const getMenus = async (req: Request, res: Response) => {
-  const results = await getManager()
-    .getRepository(Menu)
-    .find({
-      select: ["id", "name", "image", "price", "category"],
-    });
+  await AppDataSource.initialize();
+  const results = await AppDataSource.getRepository(Menu)
+    .createQueryBuilder("menu")
+    .getMany();
 
-  console.log(results);
-  res.status(200).json(results);
+  return res.status(200).json(results);
 };
