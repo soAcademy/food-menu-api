@@ -1,7 +1,7 @@
 import { Orders } from "../entity/orders";
 import { OrdersItem } from "../entity/orders_item";
 import { Request, Response } from "express";
-import { AppDataSource } from "../data-source";
+import { AppDataSource } from "../datasource";
 
 const transformOrdersData = (results: any) => {
   const data = results.reduce((arr: any, r: any) => {

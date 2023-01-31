@@ -1,6 +1,6 @@
 import { Menu } from "../entity/menu";
 import { Request, Response } from "express";
-import { AppDataSource } from "../data-source";
+import { AppDataSource } from "../datasource";
 
 export const getMenus = async (req: Request, res: Response) => {
   const results = await AppDataSource.getRepository(Menu)

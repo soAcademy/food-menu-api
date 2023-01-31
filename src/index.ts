@@ -8,7 +8,7 @@ import {
   getOrdersByTable,
   updateOrderStatus,
 } from "controller/order";
-import { AppDataSource } from "data-source";
+import { AppDataSource } from "datasource";
 import * as cors from "cors";
 
 AppDataSource.initialize().then(() => {

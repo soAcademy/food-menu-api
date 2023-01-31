@@ -6,15 +6,13 @@
   "author": "Panasun Sunanta <panasunsunanta@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node -r tsconfig-paths/register src/index"
+    "start": "ts-node -r tsconfig-paths/register src/index",
+    "build:docker": "gcloud config set project gcp-delamun & gcloud builds submit --tag asia.gcr.io/gcp-delamun/food-menu-api:$npm_package_version"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
-    "@types/node": "^17.0.23",
-    "ts-node": "^10.7.0",
-    "tsconfig-paths": "^3.14.1",
-    "typescript": "^4.6.3"
+    "@types/node": "^17.0.23"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -22,6 +20,9 @@
     "express": "^4.17.3",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.3.5"
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.1.2",
+    "typeorm": "^0.3.5",
+    "typescript": "^4.9.5"
   }
 }
