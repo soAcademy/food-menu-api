@@ -4,6 +4,8 @@ import { DataSource } from "typeorm";
 import { Orders } from "entity/orders";
 import { OrdersItem } from "entity/orders_item";
 import { Menu } from "./entity/menu";
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 export const AppDataSource = new DataSource({
   type: "postgres",

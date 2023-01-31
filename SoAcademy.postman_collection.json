@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "e4b457e0-5a56-45be-a734-8dd48ca3cded",
+		"_postman_id": "4e701555-eb5f-4543-9fe6-b626fe6767db",
 		"name": "SoAcademy",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12090981"
 	},
 	"item": [
 		{
@@ -14,12 +15,12 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/get-menus",
+							"raw": "http://localhost:3001/get-menus",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "3001",
 							"path": [
 								"get-menus"
 							]
@@ -42,12 +43,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/create-order",
+							"raw": "http://localhost:3001/create-order",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "3001",
 							"path": [
 								"create-order"
 							]
@@ -61,12 +62,12 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/get-orders",
+							"raw": "http://localhost:3001/get-orders",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "3001",
 							"path": [
 								"get-orders"
 							]
@@ -89,12 +90,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/get-orders-by-table",
+							"raw": "http://localhost:3001/get-orders-by-table",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "3001",
 							"path": [
 								"get-orders-by-table"
 							]
@@ -117,12 +118,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3000/update-order-status",
+							"raw": "http://localhost:3001/update-order-status",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "3000",
+							"port": "3001",
 							"path": [
 								"update-order-status"
 							]
