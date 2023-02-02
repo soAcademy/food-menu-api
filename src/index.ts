@@ -14,7 +14,6 @@ import * as cors from "cors";
 AppDataSource.initialize().then(() => {
   const app: Application = express();
 
-  app.options("*", cors());
   app.use(
     cors({
       origin: "*",
